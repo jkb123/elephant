@@ -1,0 +1,33 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: %user%
+ * Date: %date%
+ * Time: %time%
+ * Description:
+ */
+
+declare(strict_types=1);
+
+namespace App\Validators;
+
+use Meibuyu\Micro\Validator\Contracts\ValidatorInterface;
+use Meibuyu\Micro\Validator\HyperfValidator;
+
+class %ModelClass%Validator extends HyperfValidator
+{
+
+    protected $rules = [
+        ValidatorInterface::RULE_CREATE => [
+%createRules%
+        ],
+        ValidatorInterface::RULE_UPDATE => [
+%updateRules%
+        ],
+    ];
+
+    protected $attributes = [
+%attributes%
+    ];
+
+}

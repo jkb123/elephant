@@ -1,0 +1,11 @@
+{
+    "name": "elephant/builder",
+    "description": "基础文件生成",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "hyperf/command": "2.1.0",
+        "hyperf/db-connection": "2.1.13"
+    }
+}

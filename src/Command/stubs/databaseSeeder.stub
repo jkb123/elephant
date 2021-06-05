@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+use Hyperf\Database\Seeders\Seeder;
+use Hyperf\DbConnection\Db;
+
+class DataBaseSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     * @return void
+     */
+    public function run()
+    {
+        /**
+        * var $seeders 可执行的seeder填充类
+        **/
+        $seeders = [
+        ];
+        Db::statement('SET FOREIGN_KEY_CHECKS = 0');
+        foreach($seeders as  $item){
+            require BASE_PATH . "/seeders/seeders/" . \Hyperf\Utils\Str::snake(str_replace("::class", "", $item)) . ".php";
+            $instance = new $item;
+            $instance->run();
+        }
+        Db::statement('SET FOREIGN_KEY_CHECKS = 1');
+    }
+}

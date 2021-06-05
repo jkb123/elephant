@@ -1,0 +1,85 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: %user%
+ * Date: %date%
+ * Time: %time%
+ * Description:
+ */
+
+namespace App\Controller;
+
+use App\Repository\Interfaces\%ModelClass%Repository;
+use Hyperf\Di\Annotation\Inject;
+use Meibuyu\Micro\Annotation\AutoPerm;
+use Meibuyu\Micro\Annotation\Perm;
+
+/**
+ * @AutoPerm()
+ * Class %ModelClass%Controller
+ * @package App\Controller
+ */
+class %ModelClass%Controller extends AbstractController
+{
+
+    /**
+     * @Inject()
+     * @var %ModelClass%Repository
+     */
+    private $repository;
+
+    /**
+     * 获取列表数据
+     * @return mixed
+     */
+    public function index()
+    {
+        $list = $this->repository->list();
+        return success('获取成功', $list);
+    }
+
+    /**
+     * 获取列表数据
+     * @Perm("index")
+     * @param int $id id编号
+     * @return mixed
+     */
+    public function show($id)
+    {
+        $data = $this->repository->show($id);
+        return success('获取成功', $data);
+    }
+
+    /**
+     * 添加记录
+     * @return mixed
+     */
+    public function create()
+    {
+        $data = $this->repository->create($this->request->all());
+        return success('创建成功', $data);
+    }
+
+    /**
+     * 更新数据
+     * @param int $id id编号
+     * @return mixed
+     */
+    public function update($id)
+    {
+        $data = $this->repository->update($this->request->all(), $id);
+        return success('更新成功', $data);
+    }
+
+    /**
+     * 删除单条数据
+     * @param int $id id编号
+     * @return mixed
+     */
+    public function delete($id)
+    {
+        $deleted = $this->repository->delete($id);
+        return success('删除成功', $deleted);
+    }
+    %rs%
+}

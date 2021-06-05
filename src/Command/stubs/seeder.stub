@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Model\%modelClass%;%otherModel%
+use Faker\Factory;
+use Hyperf\Database\Seeders\Seeder;
+use Hyperf\DbConnection\Db;
+
+class %className% extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $faker = Factory::create('zh-CN');
+        %modelClass%::query()->truncate();
+        $n = %generateCount%;
+        for ($i = 0; $i < $n; $i++) {
+            $instance = %modelClass%::create([
+%fields%
+            ]);
+%otherProcess%
+        }
+    }
+}
